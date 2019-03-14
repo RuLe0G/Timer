@@ -1,0 +1,26 @@
+﻿<Window x:Class="timer.ttt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:timer"
+        mc:Ignorable="d"
+        Title="Add" Height="409.2" Width="277.6">
+    <Grid>
+        <Calendar x:Name="Calendar" HorizontalAlignment="Left" Margin="42,161,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Cancel" Content="Отмена" HorizontalAlignment="Left" Margin="22,347,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="add" Content="Добавить" HorizontalAlignment="Left" Margin="159,347,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="Seconds" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="128,112,0,0"/>
+        <TextBox x:Name="Minutes" HorizontalAlignment="Left" Height="23" Margin="128,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Hours" HorizontalAlignment="Left" Height="23" Margin="128,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="42,10,0,0" TextWrapping="Wrap" Text="no name " VerticalAlignment="Top" Width="179" GotFocus="Name_GotFocus" LostFocus="Name_LostFocus" Background="White">
+            <TextBox.Foreground>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </TextBox.Foreground>
+        </TextBox>
+        <Label Content="Часы" HorizontalAlignment="Left" Margin="22,56,0,0" VerticalAlignment="Top" Height="23" Width="101"/>
+        <Label Content="Секунды" HorizontalAlignment="Left" Margin="22,108,0,0" VerticalAlignment="Top" Height="27" Width="101"/>
+        <Label Content="Минуты" HorizontalAlignment="Left" Margin="22,80,0,0" VerticalAlignment="Top" Height="27" Width="101"/>
+
+    </Grid>
+</Window>

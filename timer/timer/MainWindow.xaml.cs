@@ -24,5 +24,18 @@ namespace timer
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {  
+            ttt ttt = new ttt();
+            if (ttt.ShowDialog() == true)
+            {
+
+            }
+            else
+            {
+
+            }
+        } 
+        }
     }
-}
