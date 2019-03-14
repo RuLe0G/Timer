@@ -23,6 +23,8 @@ namespace timer
         {
             InitializeComponent();
             Calendar.DisplayMode = CalendarMode.Decade;
+
+
         }
 
         public void Name_GotFocus(object sender, RoutedEventArgs e)
@@ -42,7 +44,15 @@ namespace timer
                 Name.Foreground.Opacity = 0.5;
                 Name.Text = "no name ";
             }
-                
+
         }
-    }
-}
+
+        public void add_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.DialogResult = true;
+
+        }
+
+
+    } }
