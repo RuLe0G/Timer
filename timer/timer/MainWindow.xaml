@@ -7,8 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="722" Height="371" Click="Button_Click"/>
-        <Button Content="вывод" HorizontalAlignment="Left" Margin="732,381,0,0" VerticalAlignment="Top" Width="50" Height="28"/>
+        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="290" Height="400" Click="Button_Click"/>
+        <Button Content="вывод" HorizontalAlignment="Left" Margin="706,196,0,0" VerticalAlignment="Top" Width="50" Height="28"/>
+        <ListBox x:Name="Txt" HorizontalAlignment="Left" Height="400" Margin="305,10,0,0" VerticalAlignment="Top" Width="396" SelectionChanged="Txt_SelectionChanged">
+            <StackPanel Orientation="Horizontal">
+                <ListBoxItem Width="277"></ListBoxItem>
+                <Button Content="Изменить"/>
+                <Button Content="Удалить"/>            
+            </StackPanel>
+            
+        </ListBox>
 
     </Grid>
 </Window>
