@@ -19,7 +19,6 @@ namespace timer
     /// </summary>
     public partial class ttt : Window
     {
-        Window ow;
 
         public ttt()
         {
@@ -33,13 +32,13 @@ namespace timer
         {
             InitializeComponent();
             Calendar.DisplayMode = CalendarMode.Decade;
-
+            string s = DateTime.Now.ToShortDateString();
             Name.Text = name;
             Seconds.Text = sse.ToString();
             Minutes.Text = min.ToString();
             Hours.Text = hou.ToString();
+            Calendar.DisplayDate = gg;
             Calendar.SelectedDate = gg;
-            
             //ow = (this.Owner as MainWindow);
 
         }
