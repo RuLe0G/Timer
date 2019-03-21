@@ -19,13 +19,30 @@ namespace timer
     /// </summary>
     public partial class ttt : Window
     {
+        Window ow;
+
         public ttt()
         {
             InitializeComponent();
             Calendar.DisplayMode = CalendarMode.Decade;
+            
+           
+        }
 
+        public ttt(string name, int hou, int sse, int min, DateTime dt)
+        {
+            InitializeComponent();
+            Calendar.DisplayMode = CalendarMode.Decade;
+
+            Name.Text = name;
+            Seconds.Text = sse.ToString();
+            Minutes.Text = min.ToString();
+            Hours.Text = hou.ToString();
+
+            //ow = (this.Owner as MainWindow);
 
         }
+
 
         public void Name_GotFocus(object sender, RoutedEventArgs e)
         {
