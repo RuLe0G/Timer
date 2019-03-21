@@ -29,7 +29,7 @@ namespace timer
            
         }
 
-        public ttt(string name, int hou, int sse, int min, DateTime dt)
+        public ttt(string name, int hou, int sse, int min, DateTime gg, DateTime dt)
         {
             InitializeComponent();
             Calendar.DisplayMode = CalendarMode.Decade;
@@ -38,7 +38,8 @@ namespace timer
             Seconds.Text = sse.ToString();
             Minutes.Text = min.ToString();
             Hours.Text = hou.ToString();
-
+            Calendar.SelectedDate = gg;
+            
             //ow = (this.Owner as MainWindow);
 
         }
