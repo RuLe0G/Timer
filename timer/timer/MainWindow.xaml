@@ -17,6 +17,8 @@
         <CheckBox x:Name="rrr" Content="минуты/секунды (сколько всего минут и секунд осталось)" HorizontalAlignment="Left" Margin="444,136,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="eee" Content="часы/минуты/секунды (сколько всего часов минут и секунд осталось)" HorizontalAlignment="Left" Margin="444,116,0,0" VerticalAlignment="Top"/>
         <Button x:Name="del" Content="удалить" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="174" Height="60" Click="del_Click"/>
+        <Button x:Name="save" Content="Сохр" HorizontalAlignment="Left" Margin="444,332,0,0" VerticalAlignment="Top" Width="338" Height="36" Click="save_Click"/>
+        <Button x:Name="load" Content="Загр" HorizontalAlignment="Left" Margin="444,373,0,0" VerticalAlignment="Top" Width="338" Height="36" Click="load_Click"/>
 
     </Grid>
 </Window>

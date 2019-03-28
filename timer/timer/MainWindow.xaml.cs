@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace timer
     /// </summary>
     public partial class MainWindow : Window
     {
+        DateTime td;
         DateTime gg;
         DateTime dt;
         Dictionary<string, DateTime> list = new Dictionary<string, DateTime>();
@@ -43,7 +45,7 @@ namespace timer
 
             if (ttt.ShowDialog() == true)
             {
-                gg = ttt.Calendar.SelectedDate.Value;
+                
                 Txt.Items.Add(ttt.Name.Text.ToString());
 
                 dt = new DateTime(ttt.Calendar.SelectedDate.Value.Year, ttt.Calendar.SelectedDate.Value.Month, ttt.Calendar.SelectedDate.Value.Day, int.Parse(ttt.Hours.Text), int.Parse(ttt.Minutes.Text), int.Parse(ttt.Seconds.Text));
@@ -90,29 +92,81 @@ namespace timer
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            ttt ttt = new ttt(Txt.SelectedValue.ToString(), dt.Hour, dt.Second, dt.Minute, gg, list[Txt.SelectedValue.ToString()]);
-
-            if (ttt.ShowDialog() == true)
+            if (Txt.SelectedIndex > -1)
             {
+                gg = list[Txt.SelectedValue.ToString()].Date;
+                td = list[Txt.SelectedValue.ToString()];
+                ttt ttt = new ttt(Txt.SelectedValue.ToString(), td.Hour, td.Second, td.Minute, gg, list[Txt.SelectedValue.ToString()]);
 
-                
-                dt = new DateTime(ttt.Calendar.SelectedDate.Value.Year, ttt.Calendar.SelectedDate.Value.Month, ttt.Calendar.SelectedDate.Value.Day, int.Parse(ttt.Hours.Text), int.Parse(ttt.Minutes.Text), int.Parse(ttt.Seconds.Text));
-               
-                //list.Remove(ttt.Name.Text.ToString());
+                if (ttt.ShowDialog() == true)
+                {
 
-                list[ttt.Name.Text] =  dt;
-            }
-            else
-            {
 
+                    dt = new DateTime(ttt.Calendar.SelectedDate.Value.Year, ttt.Calendar.SelectedDate.Value.Month, ttt.Calendar.SelectedDate.Value.Day, int.Parse(ttt.Hours.Text), int.Parse(ttt.Minutes.Text), int.Parse(ttt.Seconds.Text));
+
+                    //list.Remove(ttt.Name.Text.ToString());
+
+                    list[ttt.Name.Text] = dt;
+                }
+                else
+                {
+
+                }
             }
         }
 
         private void del_Click(object sender, RoutedEventArgs e)
         {
-            list.Remove(Txt.SelectedValue.ToString());
-            Txt.Items.Remove(Txt.SelectedValue.ToString());
-            
+            if (Txt.SelectedIndex > -1)
+            {
+                list.Remove(Txt.SelectedValue.ToString());
+                Txt.Items.Remove(Txt.SelectedValue.ToString());
+            }
+        }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+
+            dlg.FileName = "Document";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+            dlg.ShowDialog();
+
+            using (StreamWriter outputFile = new StreamWriter(dlg.FileName))
+
+                foreach (KeyValuePair<string, DateTime> entry in list)
+                {
+                    outputFile.WriteLine(entry.Key);
+                    outputFile.WriteLine(entry.Value);
+                }
+        }
+
+        private void load_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            dlg.FileName = "Document";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+
+            dlg.ShowDialog();
+
+            string line;
+
+            System.IO.StreamReader file = new System.IO.StreamReader(dlg.FileName);
+
+            while ((line = file.ReadLine()) != null)
+            {
+                string name = line;
+                Txt.Items.Add(name);
+
+                line = file.ReadLine();
+
+                DateTime dt = DateTime.Parse(line);
+                list.Add(name, dt);
+            }
+            file.Close();
         }
     }
     }
