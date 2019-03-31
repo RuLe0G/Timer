@@ -11,12 +11,14 @@
         <ListBox x:Name="Txt" HorizontalAlignment="Left" Height="400" Margin="189,9,0,0" VerticalAlignment="Top" Width="250" SelectionChanged="Txt_SelectionChanged">
         </ListBox>
         <Button x:Name="button_Copy" Content="change" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="174" Height="159" Click="Button_Click_2"/>
-        <Label x:Name="lb" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Height="81" Width="338"/>
-        <CheckBox x:Name="qqq" Content="секунды (сколько всего секунд осталось)" HorizontalAlignment="Left" Margin="444,156,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="www" Content="дни/часы/минуты/секунды" HorizontalAlignment="Left" Margin="444,96,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="rrr" Content="минуты/секунды (сколько всего минут и секунд осталось)" HorizontalAlignment="Left" Margin="444,136,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="eee" Content="часы/минуты/секунды (сколько всего часов минут и секунд осталось)" HorizontalAlignment="Left" Margin="444,116,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lb" HorizontalAlignment="Left" Margin="444,9,0,0" VerticalAlignment="Top" Height="81" Width="338"/>
+        <CheckBox x:Name="qqq" Content="секунды (сколько всего секунд осталось)" HorizontalAlignment="Left" Margin="444,155,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="www" Content="дни/часы/минуты/секунды" HorizontalAlignment="Left" Margin="444,95,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="rrr" Content="минуты/секунды (сколько всего минут и секунд осталось)" HorizontalAlignment="Left" Margin="444,135,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="eee" Content="часы/минуты/секунды (сколько всего часов минут и секунд осталось)" HorizontalAlignment="Left" Margin="444,115,-4.4,0" VerticalAlignment="Top"/>
         <Button x:Name="del" Content="удалить" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top" Width="174" Height="60" Click="del_Click"/>
+        <Button x:Name="Save" Content="Сохранить список таймеров" HorizontalAlignment="Left" Margin="444,185,0,0" VerticalAlignment="Top" Width="338" Height="39" Click="Save_Click"/>
+        <Button x:Name="Load" Content="Загрузить список таймеров" HorizontalAlignment="Left" Margin="444,229,0,0" VerticalAlignment="Top" Width="338" Height="39" Click="Load_Click"/>
 
     </Grid>
 </Window>

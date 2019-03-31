@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,9 @@ namespace timer
         DateTime gg;
         DateTime dt;
         Dictionary<string, DateTime> list = new Dictionary<string, DateTime>();
-        
+
         System.Windows.Threading.DispatcherTimer Timer;
-        
+
 
         public MainWindow()
         {
@@ -38,7 +39,7 @@ namespace timer
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-       
+
             ttt ttt = new ttt();
 
             if (ttt.ShowDialog() == true)
@@ -51,7 +52,7 @@ namespace timer
             }
             else
             {
-                
+
             }
         }
 
@@ -60,7 +61,7 @@ namespace timer
 
             Timer.Tick += new EventHandler(dispatcherTimer_Tick);
             Timer.Start();
-            
+
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -85,7 +86,7 @@ namespace timer
                 }
             }
 
-        } 
+        }
 
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -95,12 +96,12 @@ namespace timer
             if (ttt.ShowDialog() == true)
             {
 
-                
+
                 dt = new DateTime(ttt.Calendar.SelectedDate.Value.Year, ttt.Calendar.SelectedDate.Value.Month, ttt.Calendar.SelectedDate.Value.Day, int.Parse(ttt.Hours.Text), int.Parse(ttt.Minutes.Text), int.Parse(ttt.Seconds.Text));
-               
+
                 //list.Remove(ttt.Name.Text.ToString());
 
-                list[ttt.Name.Text] =  dt;
+                list[ttt.Name.Text] = dt;
             }
             else
             {
@@ -112,7 +113,62 @@ namespace timer
         {
             list.Remove(Txt.SelectedValue.ToString());
             Txt.Items.Remove(Txt.SelectedValue.ToString());
-            
+
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = "Document";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+            dlg.ShowDialog();
+
+            using (StreamWriter outputFile = new StreamWriter(dlg.FileName))
+            {
+
+                foreach (var item in Txt.Items)
+                {
+                    outputFile.WriteLine(item.ToString());
+                    outputFile.WriteLine("*");
+                    outputFile.WriteLine(list[item.ToString()]);
+                }
+            }
+
+
+        }
+
+        private void Load_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+            dlg.FileName = "Document";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents (.txt)|*.txt";
+
+            dlg.ShowDialog();
+
+
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(dlg.FileName))
+            {
+                string line;
+                string str;
+                string j;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    str = line;
+                    list.Add(str, new DateTime(0));
+                    if (line == "*")
+                    {
+                        j = line;
+                        list[str] = DateTime.Parse(j);
+                        
+                    }
+
+                }
+                sr.Close();
+            }
         }
     }
-    }
+}
